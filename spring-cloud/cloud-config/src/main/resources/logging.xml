@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Spring配置的属性 -->
+    <springProperty scope="context" name="appName" source="spring.application.name"/>
+    <!-- 控制台输出 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger) - %msg %n</pattern>
+        </encoder>
+    </appender>
+    <!-- 文件输出 -->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg %n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>/logs/${appName}/stdout%d{yyyy-MM-dd}.log</FileNamePattern>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+            <MaxHistory>15</MaxHistory>
+        </rollingPolicy>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="file" />
+        <appender-ref ref="console" />
+    </root>
+</configuration>

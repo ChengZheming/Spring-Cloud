@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    cn.haylion.ptx.common.autoconfigure.WebConfigAutoConfiguration,\
+    cn.haylion.ptx.common.autoconfigure.ExceptionAutoConfiguration
+    
